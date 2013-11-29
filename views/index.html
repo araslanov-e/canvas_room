@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Contest</title>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <!--[if IE]><script type="text/javascript" src="js/excanvas.js"></script><![endif]-->
+    <script type="text/javascript" src='js/blind_app.js'></script>
+
+    <!--colorpicker-->
+    <link rel="stylesheet" href="plugins/colorpicker/css/colorpicker.css" type="text/css" />
+    <script type="text/javascript" src="plugins/colorpicker/js/colorpicker.js"></script>
+  </head>
+  <body>
+    <div id="contest">
+      <div id="windows">
+        <img src='images/window.png' width='30' /> 
+        <img src='images/window_3.png' width='30' /> 
+        <img src='images/window_3_blank.png' width='30' /> 
+      </div>  
+      <div id="blinds">
+        <img src='images/blind.png' width='30' /> 
+        <img src='images/blind_3.png' width='30' /> 
+      </div>
+    </div>
+    <script type="text/javascript" charset="utf-8">
+      $(function(){
+        BlindApp.init('contest')
+      })
+    </script>
+
+  </body>
+</html>

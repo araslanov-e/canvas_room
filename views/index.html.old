@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Contest</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js"></script>
+    <script type="text/javascript" src='js/context.js'></script>
+  </head>
+  <body>
+    <canvas id='contest' width='800' height='600' ></canvas>
+    <div id="windows">
+      <img src='images/window.png' width='30' /> 
+      <img src='images/window_3.png' width='30' /> 
+      <img src='images/window_3_blank.png' width='30' /> 
+    </div>  
+    <div id="blinds">
+      <img src='images/blind.png' width='30' /> 
+      <img src='images/blind_3.png' width='30' /> 
+    </div>
+  </body>
+</html>
