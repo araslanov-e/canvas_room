@@ -43,19 +43,19 @@ var BlindApp = (function(){
     context.lineWidth = 3
     
     context.moveTo(0, 0)
-    context.lineTo(50, 50)
+    context.lineTo(100, 40)
 
     context.moveTo(canvasWidth, 0)
-    context.lineTo(canvasWidth-50, 50)
+    context.lineTo(canvasWidth-100, 40)
 
     context.moveTo(canvasWidth, canvasHeight)    
-    context.lineTo(canvasWidth-50, canvasHeight-50)    
+    context.lineTo(canvasWidth-100, canvasHeight-100)    
 
     context.moveTo(0, canvasHeight)    
-    context.lineTo(50, canvasHeight-50)    
+    context.lineTo(100, canvasHeight-100)    
 
     context.rect(0, 0, canvasWidth, canvasHeight)
-    context.rect(50, 50, canvasWidth-100, canvasHeight-100)
+    context.rect(100, 40, canvasWidth-200, canvasHeight-140)
 
     context.stroke()
   }

@@ -57,16 +57,16 @@ window.onload = function(){
     ctx.lineWidth = 3;
     
     ctx.moveTo(0, 0)
-    ctx.lineTo(50, 50)
+    ctx.lineTo(100, 40)
 
     ctx.moveTo(canvas.width, 0)
-    ctx.lineTo(canvas.width-50, 50)
+    ctx.lineTo(canvas.width-40, 100)
 
     ctx.moveTo(canvas.width, canvas.height)    
-    ctx.lineTo(canvas.width-50, canvas.height-50)    
+    ctx.lineTo(canvas.width-100, canvas.height-100)    
 
     ctx.moveTo(0, canvas.height)    
-    ctx.lineTo(50, canvas.height-50)    
+    ctx.lineTo(0, canvas.height-50)    
 
     ctx.rect(0, 0, canvas.width, canvas.height)
     ctx.rect(50, 50, canvas.width-100, canvas.height-100)
