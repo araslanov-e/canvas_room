@@ -1,3 +1,11 @@
+function utf8_to_b64( str ) {
+    return window.btoa(unescape(encodeURIComponent( str )));
+}
+
+function b64_to_utf8( str ) {
+    return decodeURIComponent(escape(window.atob( str )));
+}
+
 var BlindApp = (function(){
   var canvas,
       context,
@@ -13,7 +21,8 @@ var BlindApp = (function(){
         r: 255,
         g: 255,
         b: 255
-      }
+      },
+      curColorHex = 'ffffff'
 
   // очистить canvas
   clearCanvas = function(){
@@ -62,29 +71,43 @@ var BlindApp = (function(){
 
   // отобразить объект
   drawObject = function(obj, composite) {
-    context.globalCompositeOperation = composite
-    if (isImageOk(obj)) {
-      context.drawImage(obj, canvasWidth/2-obj.width/2, canvasHeight/2-obj.height/2) 
-      outlineLayerData = context.getImageData(0, 0, canvasWidth, canvasHeight)
-    } else {
-      obj.onload = function() {
-        context.drawImage(obj, canvasWidth/2-obj.width/2, canvasHeight/2-obj.height/2) 
+    //context.globalCompositeOperation = composite
+    //if (isImageOk(obj)) {
+      //context.drawImage(obj, canvasWidth/2-obj.width/2, canvasHeight/2-obj.height/2) 
+      //outlineLayerData = context.getImageData(0, 0, canvasWidth, canvasHeight)
+    //} else {
+      //obj.onload = function() {
+        //context.drawImage(obj, canvasWidth/2-obj.width/2, canvasHeight/2-obj.height/2) 
+        //outlineLayerData = context.getImageData(0, 0, canvasWidth, canvasHeight)
+      //}
+    //}
+    $.get(obj.src, function(source) {
+      var svgString = source;
+      svgString = svgString.replace(/FEFEFE/g, curColorHex);
+      //context.drawSvg(svgString, canvasWidth/2-obj.width/2, canvasHeight/2-obj.height/2);
+      //outlineLayerData = context.getImageData(0, 0, canvasWidth, canvasHeight)
+      // Create a Data URI.
+      var sourceImage = new Image();
+      sourceImage.src = 'data:image/svg+xml;base64,'+window.utf8_to_b64(svgString);
+      sourceImage.onload = function(){
+        context.drawImage(sourceImage, canvasWidth/2-obj.width/2, canvasHeight/2-obj.height/2) 
         outlineLayerData = context.getImageData(0, 0, canvasWidth, canvasHeight)
       }
-    }
+    }, 'text');
+
   }
 
   redraw = function() {
     clearCanvas()
     context.putImageData(colorLayerData, 0, 0)
     drawRoom()
-    drawObject(blindImage, 'destination-over')
     drawObject(windowImage, 'destination-over')
+    drawObject(blindImage, 'destination-over')
   }
 
   // 
   matchOutlineColor = function (r, g, b, a) {
-    return (r + g + b < 100 && a === 255)
+    return (r + g + b < 200 && a === 255)
   }
 
   // 
@@ -274,7 +297,23 @@ var BlindApp = (function(){
           $('#color_picker').css('backgroundColor', '#' + hex);
         }
       })
+      colorPickerBlind = $('<div>', {id: 'color_picker_blind'}).ColorPicker({
+        color: '#ffffff',
+        onShow: function (colpkr) {
+          $(colpkr).fadeIn(500)
+          return false
+        },
+        onHide: function (colpkr) {
+          $(colpkr).fadeOut(500)
+          return false;
+        },          
+        onChange: function(hsb, hex, rgb){
+          curColorHex = hex
+          $('#color_picker_blind').css('backgroundColor', '#' + hex);
+        }
+      })
       $('#'+id).append(colorPicker)
+      $('#'+id).append(colorPickerBlind)
 
       drawRoom()  
 
