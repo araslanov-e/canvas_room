@@ -1,14 +1,16 @@
 function utf8_to_b64( str ) {
-    return window.btoa(unescape(encodeURIComponent( str )));
+  return window.btoa(unescape(encodeURIComponent( str )));
 }
 
 function b64_to_utf8( str ) {
-    return decodeURIComponent(escape(window.atob( str )));
+  return decodeURIComponent(escape(window.atob( str )));
 }
 
 var BlindApp = (function(){
   var canvas,
       context,
+      destinationCanvas,
+      destinationContext,
       canvasWidth = 800,
       canvasHeight = 600,
       windowsBlock = 'windows',
@@ -27,23 +29,7 @@ var BlindApp = (function(){
   // очистить canvas
   clearCanvas = function(){
     context.clearRect(0, 0, canvasWidth, canvasHeight)
-    //canvas.width = canvas.width
-  }
-
-  // проверить загружен ли объект
-  isImageOk = function(img) {
-    // During the onload event, IE correctly identifies any images that
-    // weren’t downloaded as not complete. Others should too. Gecko-based
-    // browsers act like NS4 in that they report this incorrectly.
-    if (!img.complete) { return false }
-
-    // However, they do have two very useful properties: naturalWidth and
-    // naturalHeight. These give the true size of the image. If it failed
-    // to load, either of these should be zero.
-    if (typeof img.naturalWidth != "undefined" && img.naturalWidth == 0) { return false }
-
-    // No other way of checking: assume it’s ok.
-    return true
+    numResourcesLoaded = 0
   }
 
   // нарисовать комнату
@@ -67,31 +53,21 @@ var BlindApp = (function(){
     context.rect(100, 40, canvasWidth-200, canvasHeight-140)
 
     context.stroke()
+    outlineLayerData = context.getImageData(0, 0, canvasWidth, canvasHeight)
   }
 
   // отобразить объект
-  drawObject = function(obj, composite) {
-    //context.globalCompositeOperation = composite
-    //if (isImageOk(obj)) {
-      //context.drawImage(obj, canvasWidth/2-obj.width/2, canvasHeight/2-obj.height/2) 
-      //outlineLayerData = context.getImageData(0, 0, canvasWidth, canvasHeight)
-    //} else {
-      //obj.onload = function() {
-        //context.drawImage(obj, canvasWidth/2-obj.width/2, canvasHeight/2-obj.height/2) 
-        //outlineLayerData = context.getImageData(0, 0, canvasWidth, canvasHeight)
-      //}
-    //}
+  drawObject = function(obj) {
     $.get(obj.src, function(source) {
       var svgString = source;
       svgString = svgString.replace(/FEFEFE/g, curColorHex);
-      //context.drawSvg(svgString, canvasWidth/2-obj.width/2, canvasHeight/2-obj.height/2);
-      //outlineLayerData = context.getImageData(0, 0, canvasWidth, canvasHeight)
-      // Create a Data URI.
+
       var sourceImage = new Image();
       sourceImage.src = 'data:image/svg+xml;base64,'+window.utf8_to_b64(svgString);
       sourceImage.onload = function(){
         context.drawImage(sourceImage, canvasWidth/2-obj.width/2, canvasHeight/2-obj.height/2) 
         outlineLayerData = context.getImageData(0, 0, canvasWidth, canvasHeight)
+        destinationContext.putImageData(outlineLayerData, 0, 0)
       }
     }, 'text');
 
@@ -101,8 +77,8 @@ var BlindApp = (function(){
     clearCanvas()
     context.putImageData(colorLayerData, 0, 0)
     drawRoom()
-    drawObject(windowImage, 'destination-over')
-    drawObject(blindImage, 'destination-over')
+    drawObject(windowImage)
+    drawObject(blindImage)
   }
 
   // 
@@ -139,7 +115,7 @@ var BlindApp = (function(){
     return true
   }
 
-  // изменить цвет точку
+  // изменить цвет точки
   colorPixel = function (pixelPos, r, g, b, a) {
     colorLayerData.data[pixelPos] = r
     colorLayerData.data[pixelPos + 1] = g
@@ -223,13 +199,13 @@ var BlindApp = (function(){
         b = colorLayerData.data[pixelPos + 2],
         a = colorLayerData.data[pixelPos + 3]
 
+    // если такой же цвет
     if (r === curColor.r && g === curColor.g && b === curColor.b) {
-      // Return because trying to fill with the same color
       return
     }
 
+    // если попали в границу
     if (matchOutlineColor(r, g, b, a)) {
-      // Return because clicked outline
       return
     }
 
@@ -240,11 +216,10 @@ var BlindApp = (function(){
   // создание событий мыши
   createMouseEvents = function() {
     // нажатие на canvas
-    canvas.onmousedown = function(e) {
+    //canvas.onmousedown = function(e) {
+    destinationCanvas.onmousedown = function(e) {
       var mouseX = e.pageX - this.offsetLeft,
           mouseY = e.pageY - this.offsetTop
-      console.info('Mouse:'+mouseX + ' ' + mouseY)
-      
       paintAt(mouseX, mouseY)
     }
     
@@ -274,12 +249,21 @@ var BlindApp = (function(){
 			canvas.setAttribute('id', 'canvas')
 			document.getElementById(id).appendChild(canvas)
 
+      // создание дубликата, для гладкой отрисовки
+      destinationCanvas = document.createElement('canvas')
+			destinationCanvas.setAttribute('width', canvasWidth)
+			destinationCanvas.setAttribute('height', canvasHeight)
+			destinationCanvas.setAttribute('id', 'destination_canvas')
+			document.getElementById(id).appendChild(destinationCanvas)
+
 			if (typeof G_vmlCanvasManager !== "undefined") {
 				canvas = G_vmlCanvasManager.initElement(canvas)
+				destinationCanvas = G_vmlCanvasManager.initElement(destinationCanvas)
 			}
 
 			// IE8 и ранее не поддерживают синтаксис: context = document.getElementById('canvas').getContext("2d")
 			context = canvas.getContext("2d")
+			destinationContext = destinationCanvas.getContext("2d")
 
       // добавляем ColorPicker
       colorPicker = $('<div>', {id: 'color_picker'}).ColorPicker({
@@ -310,6 +294,7 @@ var BlindApp = (function(){
         onChange: function(hsb, hex, rgb){
           curColorHex = hex
           $('#color_picker_blind').css('backgroundColor', '#' + hex);
+          redraw();
         }
       })
       $('#'+id).append(colorPicker)
@@ -326,6 +311,7 @@ var BlindApp = (function(){
       }
       clearCanvas()
       colorLayerData = context.getImageData(0, 0, canvasWidth, canvasHeight)
+      destinationContext.putImageData(outlineLayerData, 0, 0)
 
       createMouseEvents()
       redraw()
