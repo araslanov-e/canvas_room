@@ -1,3 +1,6 @@
 #canvas {
-  display: none;
+  float: left;
 }
+
+#toolbar img {width: 100px; }
+#toolbar .active {border: 1px solid red}

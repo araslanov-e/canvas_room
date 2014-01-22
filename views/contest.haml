@@ -1,0 +1,27 @@
+!!! 5
+%html
+  %head
+    %title Contest
+    %script{src: "//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"}
+
+    %link{rel: 'stylesheet', href: 'css/styles.css'}
+    %script{src: "js/btoa.js"}
+    %script{src: "js/objects.js"}
+    %script{src: "js/contest.js"}
+
+    -# colorpicker
+    %link{rel: 'stylesheet', href: 'plugins/colorpicker/css/colorpicker.css'}
+    %script{src: "plugins/colorpicker/js/colorpicker.js"}
+
+  %body
+    #contest
+      #canvas
+      #toolbar
+      #settings
+    :coffee
+      $ ->
+        Contest.init()
+        
+      
+
+

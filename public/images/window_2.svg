@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 15.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="298px" height="420px" viewBox="0 0 298 420" enable-background="new 0 0 298 420" xml:space="preserve">
+<radialGradient id="SVGID_1_" cx="98.0854" cy="113.5029" r="66.3419" gradientUnits="userSpaceOnUse">
+	<stop  offset="0" style="stop-color:#58595B"/>
+	<stop  offset="0.59" style="stop-color:#414042"/>
+	<stop  offset="0.68" style="stop-color:#D1D3D4"/>
+	<stop  offset="0.77" style="stop-color:#D1D3D4"/>
+	<stop  offset="1" style="stop-color:#E6E7E8"/>
+</radialGradient>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="url(#SVGID_1_)" d="M98.085,160.399c26.438,0,48-21.067,48-46.896
+	c0-25.83-21.563-46.897-48-46.897s-48,21.067-48,46.897C50.085,139.333,71.648,160.399,98.085,160.399z"/>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="#5D2910" d="M98.023,153.765c22.768,0,41.336-18.142,41.336-40.386
+	s-18.569-40.387-41.336-40.387s-41.337,18.143-41.337,40.387S75.256,153.765,98.023,153.765z"/>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="#A66249" d="M98.085,152.797c22.152,0,40.219-17.652,40.219-39.294
+	c0-21.643-18.067-39.295-40.219-39.295S57.867,91.86,57.867,113.503C57.867,135.146,75.934,152.797,98.085,152.797z"/>
+<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="59.7803" y1="114.0757" x2="143.5225" y2="114.0757">
+	<stop  offset="0" style="stop-color:#79D1F1"/>
+	<stop  offset="0.47" style="stop-color:#AADFEF"/>
+	<stop  offset="0.87" style="stop-color:#E2F3F9"/>
+	<stop  offset="0.99" style="stop-color:#FFFFFF"/>
+	<stop  offset="1" style="stop-color:#F1FAFE"/>
+</linearGradient>
+<ellipse fill-rule="evenodd" clip-rule="evenodd" fill="url(#SVGID_2_)" cx="98.078" cy="114.076" rx="37.813" ry="36.944"/>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="#5D2910" d="M97.499,103.285c5.409,0,9.793,4.284,9.793,9.568
+	c0,5.285-4.385,9.568-9.793,9.568s-9.793-4.284-9.793-9.568C87.705,107.569,92.09,103.285,97.499,103.285L97.499,103.285z
+	 M97.499,106.422c-3.635,0-6.583,2.88-6.583,6.432s2.947,6.432,6.583,6.432c3.636,0,6.583-2.88,6.583-6.432
+	S101.134,106.422,97.499,106.422z"/>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="#5D2910" d="M97.499,107.042c3.285,0,5.949,2.602,5.949,5.812
+	s-2.664,5.812-5.949,5.812c-3.286,0-5.949-2.602-5.949-5.812S94.213,107.042,97.499,107.042L97.499,107.042z M97.499,108.017
+	c-2.734,0-4.951,2.166-4.951,4.837s2.217,4.837,4.951,4.837c2.734,0,4.951-2.166,4.951-4.837S100.233,108.017,97.499,108.017z"/>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="#5D2910" d="M98.046,76.646c21.052,0,38.118,16.674,38.118,37.242
+	c0,20.568-17.066,37.242-38.118,37.242c-21.052,0-38.118-16.674-38.118-37.242C59.928,93.319,76.994,76.646,98.046,76.646
+	L98.046,76.646z M98.046,78.366c-20.08,0-36.357,15.903-36.357,35.521c0,19.618,16.278,35.521,36.357,35.521
+	s36.357-15.904,36.357-35.521C134.403,94.27,118.125,78.366,98.046,78.366z"/>
+<g>
+	<rect x="98.314" y="76.747" fill-rule="evenodd" clip-rule="evenodd" fill="#5D2910" width="1.22" height="28.974"/>
+	<rect x="95.218" y="74.318" fill-rule="evenodd" clip-rule="evenodd" fill="#A66249" width="3.096" height="31.142"/>
+</g>
+<g>
+	
+		<rect x="99.478" y="98.552" transform="matrix(-0.7245 0.6892 -0.6892 -0.7245 264.8821 92.4604)" fill-rule="evenodd" clip-rule="evenodd" fill="#5D2910" width="28.973" height="1.22"/>
+	
+		<rect x="111.903" y="81.102" transform="matrix(0.6892 0.7246 -0.7246 0.6892 105.3021 -52.1572)" fill-rule="evenodd" clip-rule="evenodd" fill="#A66249" width="3.096" height="31.141"/>
+</g>
+<g>
+	
+		<rect x="68.702" y="95.51" transform="matrix(0.7205 0.6935 -0.6935 0.7205 89.8378 -30.6741)" fill-rule="evenodd" clip-rule="evenodd" fill="#5D2910" width="28.538" height="1.201"/>
+	<polygon fill-rule="evenodd" clip-rule="evenodd" fill="#A66249" points="92.847,106.094 90.489,108.489 69.768,88.61 
+		72.002,86.29 	"/>
+</g>
+<g>
+	<rect x="104.456" y="113.739" fill-rule="evenodd" clip-rule="evenodd" fill="#5D2910" width="31.436" height="1.219"/>
+	<rect x="104.715" y="110.643" fill-rule="evenodd" clip-rule="evenodd" fill="#A66249" width="32.364" height="3.096"/>
+</g>
+<g>
+	<rect x="98.314" y="120.512" fill-rule="evenodd" clip-rule="evenodd" fill="#5D2910" width="1.22" height="29.347"/>
+	<rect x="95.218" y="120.141" fill-rule="evenodd" clip-rule="evenodd" fill="#A66249" width="3.096" height="31.142"/>
+</g>
+<g>
+	
+		<rect x="67.446" y="128.846" transform="matrix(-0.7245 0.6892 -0.6892 -0.7245 230.8435 166.6512)" fill-rule="evenodd" clip-rule="evenodd" fill="#5D2910" width="29.347" height="1.22"/>
+	
+		<rect x="78.703" y="112.684" transform="matrix(0.6892 0.7246 -0.7246 0.6892 117.8674 -18.2875)" fill-rule="evenodd" clip-rule="evenodd" fill="#A66249" width="3.096" height="31.142"/>
+</g>
+<g>
+	
+		<rect x="99.514" y="126.606" transform="matrix(0.7205 0.6934 -0.6934 0.7205 120.4873 -44.4119)" fill-rule="evenodd" clip-rule="evenodd" fill="#5D2910" width="31.65" height="1.315"/>
+	
+		<rect x="112.268" y="112.625" transform="matrix(0.6935 -0.7204 0.7204 0.6935 -57.9316 121.5382)" fill-rule="evenodd" clip-rule="evenodd" fill="#A66249" width="3.227" height="32.466"/>
+</g>
+<g>
+	<rect x="60.317" y="113.739" fill-rule="evenodd" clip-rule="evenodd" fill="#5D2910" width="29.347" height="1.219"/>
+	<rect x="58.894" y="110.643" fill-rule="evenodd" clip-rule="evenodd" fill="#A66249" width="31.142" height="3.096"/>
+</g>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="#A66249" d="M97.499,104.586c4.673,0,8.462,3.702,8.462,8.268
+	s-3.789,8.268-8.462,8.268s-8.462-3.702-8.462-8.268S92.825,104.586,97.499,104.586L97.499,104.586z M97.499,107.296
+	c-3.142,0-5.688,2.488-5.688,5.557s2.546,5.557,5.688,5.557c3.141,0,5.688-2.488,5.688-5.557S100.64,107.296,97.499,107.296z"/>
+</svg>
