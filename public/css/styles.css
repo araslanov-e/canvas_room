@@ -9,5 +9,11 @@
 #destination_canvas {
 }
 
+#toolbar {
+}
 #toolbar img {width: 100px; }
 #toolbar .active {border: 1px solid red}
+
+#settings {
+  float: left;
+}

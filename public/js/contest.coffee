@@ -45,6 +45,23 @@ class Contest
       Contest.currentElement.visible = !Contest.currentElement.visible
       Contest.redrawCanvas()
 
+    for color, index in @currentElement.colors
+      do (color, index) ->
+        $('<div>', id: 'color_' + index, class: 'element_color').ColorPicker
+          color: color.color
+          onShow: (colpkr) ->
+            $(colpkr).fadeIn(500)
+            false
+          onHide: (colpkr) ->
+            $(colpkr).fadeOut(500)
+            false
+          onChange: (hsb, hex, rgb) ->
+            color.color = '#' + hex
+            $('#color_' + index).css 'background-color', color.color
+            Contest.redrawCanvas()
+        .appendTo('#settings')
+
+
   @init: ->
     @loadElements ->
       Contest.initCanvas()

@@ -159,7 +159,7 @@
 .colorpicker_slider {
 	background-position: bottom;
 }
-#color_picker, #color_picker_blind {
+#color_picker, #color_picker_blind, .element_color {
 	width: 36px;
 	height: 36px;
 	background: url(../images/select3.png);
