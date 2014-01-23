@@ -66,6 +66,16 @@ class Element
       y: 0
   )
   new Element(
+    url: 'images/windows/окно_3.svg'
+    colors: []
+    visible: false
+    drag: true
+    scale: 1
+    offset:
+      x: 0
+      y: 0
+  )
+  new Element(
     url: 'images/blinds/blind.svg'
     colors: [
       new Color(
@@ -97,6 +107,32 @@ class Element
       new Color(
         title: 'Наконечники'
         replace: '#4FA392'
+        color: '#FFFFFF'
+      )
+      new Color(
+        title: 'Подвязки'
+        replace: '#7670B3'
+        color: '#FFFFFF'
+      )
+    ]
+    visible: false
+    drag: true
+    scale: 1
+    offset:
+      x: 0
+      y: 0
+  )
+  new Element(
+    url: 'images/blinds/шторы_4.svg'
+    colors: [
+      new Color(
+        title: 'Штора'
+        replace: '#FFFFFF'
+        color: '#FFFFFF'
+      )
+      new Color(
+        title: 'Наконечники'
+        replace: '#A7A9AC'
         color: '#FFFFFF'
       )
     ]
