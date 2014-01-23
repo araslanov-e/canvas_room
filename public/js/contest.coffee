@@ -17,10 +17,17 @@ class Contest
   @drawElements: (callback) ->
     counter = 0
     visibleElements = (element for element in elements when element.visible)
+    callback() if visibleElements.length is 0
     for element in visibleElements
       do (element) ->
         element.getImage ->
-          Contest.sourceContext.drawImage(@, element.offset.x, element.offset.y)
+          Contest.sourceContext.drawImage(
+            @
+            element.offset.x
+            element.offset.y
+            Math.floor(@width * element.scale)
+            Math.floor(@height * element.scale)
+          )
           counter++
           callback() if counter is visibleElements.length
 
@@ -41,7 +48,9 @@ class Contest
 
     show = $('<div>', id: 'show')
     colors = $('<div>', id: 'colors')
+    scale = $('<div>', id: 'scale')
 
+    # show
     input = $('<input>', type: 'checkbox')
       .attr('checked', @currentElement.visible)
       .on 'change', (e) ->
@@ -50,6 +59,7 @@ class Contest
 
     show.append(input).append('Отобразить').appendTo(settings)
 
+    # colors
     for color, index in @currentElement.colors
       do (color, index) ->
         colors.append(color.title).appendTo(settings)
@@ -69,6 +79,21 @@ class Contest
             Contest.redrawCanvas()
         .appendTo(colors)
 
+    # scale
+    if @currentElement.drag
+      scale.append('Масштаб').appendTo(settings)
+      $('<div>').slider(
+        min: 0
+        max: 200
+        value: @currentElement.scale * 100
+        slide: (event, ui) ->
+          Contest.currentElement.scale = ui.value / 100
+          Contest.redrawCanvas()
+      )
+      .appendTo(scale)
+      scale.appendTo(settings)
+
+
   @init: ->
     @loadElements ->
       Contest.initCanvas()
@@ -86,11 +111,12 @@ class Contest
       width: @canvasWidth
       height: @canvasHeight
     .on 'mousedown', (e) ->
-      drag = true
-      mouseX = e.pageX
-      mouseY = e.pageY
-      primaryX = Contest.currentElement.offset.x
-      primaryY = Contest.currentElement.offset.y
+      if Contest.currentElement
+        drag = true
+        mouseX = e.pageX
+        mouseY = e.pageY
+        primaryX = Contest.currentElement.offset.x
+        primaryY = Contest.currentElement.offset.y
     .on 'mouseup', (e) ->
       drag = false
     .on 'mouseout', (e) ->
@@ -113,7 +139,7 @@ class Contest
     @sourceContext.clearRect(0, 0, @canvasWidth, @canvasHeight)
 
   @copyCanvas: ->
-    imageData = @sourceContext.getImageData(0, 0, @canvasWidth-1, @canvasHeight-1)
+    imageData = @sourceContext.getImageData(0, 0, @canvasWidth, @canvasHeight)
     @destinationContext.putImageData(imageData, 0, 0)
 
   @redrawCanvas: ->

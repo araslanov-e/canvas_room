@@ -50,6 +50,7 @@ class Element
     ]
     visible: true
     drag: false
+    scale: 1
     offset:
       x: 0
       y: 0
@@ -59,6 +60,7 @@ class Element
     colors: []
     visible: false
     drag: true
+    scale: 1
     offset:
       x: 0
       y: 0
@@ -74,6 +76,33 @@ class Element
     ]
     visible: false
     drag: true
+    scale: 1
+    offset:
+      x: 0
+      y: 0
+  )
+  new Element(
+    url: 'images/blinds/шторы_16.svg'
+    colors: [
+      new Color(
+        title: 'Левая шторина'
+        replace: '#8ED8F8'
+        color: '#FFFFFF'
+      )
+      new Color(
+        title: 'Правая шторина'
+        replace: '#A5C3D2'
+        color: '#FFFFFF'
+      )
+      new Color(
+        title: 'Наконечники'
+        replace: '#4FA392'
+        color: '#FFFFFF'
+      )
+    ]
+    visible: false
+    drag: true
+    scale: 1
     offset:
       x: 0
       y: 0
