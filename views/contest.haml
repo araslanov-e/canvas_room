@@ -6,7 +6,7 @@
 
     %link{rel: 'stylesheet', href: 'css/styles.css'}
     %script{src: "js/btoa.js"}
-    %script{src: "js/objects.js"}
+    %script{src: "js/elements.js"}
     %script{src: "js/contest.js"}
 
     -# colorpicker
@@ -16,8 +16,8 @@
   %body
     #contest
       #canvas
-        %canvas{id: 'sourceCanvas'}
-        %canvas{id: 'destinationCanvas'}
+        %canvas{id: 'source_canvas'}
+        %canvas{id: 'destination_canvas'}
       #toolbar
       #settings
     :coffee

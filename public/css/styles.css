@@ -2,5 +2,12 @@
   float: left;
 }
 
+#source_canvas {
+  display: none;
+}
+
+#destination_canvas {
+}
+
 #toolbar img {width: 100px; }
 #toolbar .active {border: 1px solid red}

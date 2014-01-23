@@ -18,7 +18,7 @@ class Element
 
 @.elements = [
   new Element(
-    url: 'images/room.svg'
+    url: 'images/rooms/room.svg'
     color: '#FEFEFE'
     visible: true
     drag: false
@@ -27,7 +27,7 @@ class Element
       y: 0
   )
   new Element(
-    url: 'images/window.svg'
+    url: 'images/windows/window.svg'
     color: '#FEFEFE'
     visible: false
     drag: true
@@ -36,7 +36,7 @@ class Element
       y: 0
   )
   new Element(
-    url: 'images/blind.svg'
+    url: 'images/blinds/blind.svg'
     color: '#FEFEFE'
     visible: false
     drag: true
