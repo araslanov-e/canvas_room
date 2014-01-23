@@ -1,5 +1,6 @@
 #canvas {
   float: left;
+  padding: 10px;
 }
 
 #source_canvas {
@@ -11,9 +12,22 @@
 
 #toolbar {
 }
-#toolbar img {width: 100px; }
-#toolbar .active {border: 1px solid red}
+#toolbar img {
+  width: 50px; 
+  padding: 4px;
+  border: 2px solid #fff;
+}
+#toolbar .active {
+  border: 2px solid #ddd;
+}
 
 #settings {
   float: left;
+  border: 1px solid #ddd;
+}
+#settings #show {
+  padding: 10px;
+}
+#settings #colors {
+  padding: 10px;
 }

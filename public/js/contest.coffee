@@ -36,18 +36,26 @@ class Contest
             Contest.showElementSettings()
 
   @showElementSettings: ->
-    $('#settings').empty()
+    settings = $('#settings')
+    settings.empty()
 
-    $('<input>', type: 'checkbox')
-    .attr('checked', @currentElement.visible)
-    .appendTo('#settings')
-    .on 'change', (e) ->
-      Contest.currentElement.visible = !Contest.currentElement.visible
-      Contest.redrawCanvas()
+    show = $('<div>', id: 'show')
+    colors = $('<div>', id: 'colors')
+
+    input = $('<input>', type: 'checkbox')
+      .attr('checked', @currentElement.visible)
+      .on 'change', (e) ->
+        Contest.currentElement.visible = !Contest.currentElement.visible
+        Contest.redrawCanvas()
+
+    show.append(input).append('Отобразить').appendTo(settings)
 
     for color, index in @currentElement.colors
       do (color, index) ->
-        $('<div>', id: 'color_' + index, class: 'element_color').ColorPicker
+        colors.append(color.title).appendTo(settings)
+        $('<div>', id: 'color_' + index, class: 'element_color')
+        .css('background-color', color.color)
+        .ColorPicker
           color: color.color
           onShow: (colpkr) ->
             $(colpkr).fadeIn(500)
@@ -59,8 +67,7 @@ class Contest
             color.color = '#' + hex
             $('#color_' + index).css 'background-color', color.color
             Contest.redrawCanvas()
-        .appendTo('#settings')
-
+        .appendTo(colors)
 
   @init: ->
     @loadElements ->
