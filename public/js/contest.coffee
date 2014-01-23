@@ -52,11 +52,9 @@ class Contest
     drag = false
     x = y = 0
     ex = ey = 0
-    @canvas = $('<canvas/>').attr
-      id: 'sourceCanvas'
+    @canvas = $('#sourceCanvas').attr
       width: @canvasWidth
       height: @canvasHeight
-    .appendTo('#canvas')
     .on 'mousedown', (e) ->
       drag = true
       x = e.pageX
@@ -75,8 +73,8 @@ class Contest
 
     @canvas = @canvas[0]
 
-    if typeof G_vmlCanvasManager != "undefined"
-      @canvas = G_vmlCanvasManager.initElement(@canvas)
+    #if typeof G_vmlCanvasManager != "undefined"
+      #@canvas = G_vmlCanvasManager.initElement(@canvas)
 
     @context = @canvas.getContext('2d')
     @redrawCanvas()
