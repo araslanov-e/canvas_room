@@ -139,7 +139,13 @@ class Contest
     @sourceContext.clearRect(0, 0, @canvasWidth, @canvasHeight)
 
   @copyCanvas: ->
-    imageData = @sourceContext.getImageData(0, 0, @canvasWidth, @canvasHeight)
+    # Test for cross origin security error (SECURITY_ERR: DOM Exception 18)
+    try
+      imageData = @sourceContext.getImageData(0, 0, @canvasWidth, @canvasHeight)
+    catch error
+      alert "Приложение не может быть запущено локально. Попробуйте запустить на сервере."
+      return
+    
     @destinationContext.putImageData(imageData, 0, 0)
 
   @redrawCanvas: ->
