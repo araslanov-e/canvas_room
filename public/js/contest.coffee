@@ -51,13 +51,18 @@ class Contest
     scale = $('<div>', id: 'scale')
 
     # show
+    label = $("<label>")
     input = $('<input>', type: 'checkbox')
       .attr('checked', @currentElement.visible)
       .on 'change', (e) ->
         Contest.currentElement.visible = !Contest.currentElement.visible
         Contest.redrawCanvas()
 
-    show.append(input).append('Отобразить').appendTo(settings)
+    show
+      .append(
+        label.append(input).append('Отобразить')
+      )
+      .appendTo(settings)
 
     # colors
     for color, index in @currentElement.colors
